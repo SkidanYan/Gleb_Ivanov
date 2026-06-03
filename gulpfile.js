@@ -45,10 +45,17 @@ function typescript() {
 }
 
 // 5. ИСПРАВЛЕННАЯ ФУНКЦИЯ КАРТИНКОВ: Явно возвращаем поток (return)
-function images() {
+function imagesBase() {
   return gulp
     .src('src/images/**/*', { encoding: false }) // Отключаем текстовую кодировку для бинарных файлов (очень важно в Gulp 5)
     .pipe(gulp.dest('dist/images'))
+    .pipe(browserSync.stream());
+}
+
+function imagesServices() {
+  return gulp
+    .src('src/components/services/serviceImage/**/*', { encoding: false })
+    .pipe(gulp.dest('dist/images/serviceImage'))
     .pipe(browserSync.stream());
 }
 
@@ -73,7 +80,8 @@ function watchFiles() {
   gulp.watch('src/**/*.html', gulp.series(html, reload));
   gulp.watch('src/**/*.scss', scss);
   gulp.watch('src/**/*.ts', gulp.series(typescript, reload));
-  gulp.watch('src/images/**/*', gulp.series(images, reload)); // Добавили перезагрузку при изменении картинок
+  gulp.watch('src/images/**/*', gulp.series(imagesBase, reload)); // Добавили перезагрузку при изменении картинок
+  gulp.watch('src/components/services/serviceImage/**/*', gulp.series(imagesServices, reload));
 }
 
 // --- Сценарии ---
@@ -81,7 +89,7 @@ function watchFiles() {
 // Полная сборка (strict последовательность: сначала чистим, ПОТОМ копируем)
 const build = gulp.series(
   clean,
-  gulp.parallel(html, scss, typescript, images)
+  gulp.parallel(html, scss, typescript, imagesBase, imagesServices)
 );
 
 // Режим разработки
@@ -95,7 +103,9 @@ exports.clean = clean;
 exports.html = html;
 exports.scss = scss;
 exports.typescript = typescript;
-exports.images = images;
+exports.images = gulp.parallel(imagesBase, imagesServices);
+exports.imagesBase = imagesBase;
+exports.imagesServices = imagesServices;
 exports.build = build;
 exports.dev = dev;
 exports.default = dev;

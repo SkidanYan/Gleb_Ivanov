@@ -1,0 +1,72 @@
+@use '../../../scss/base/variables' as *;
+@use '../../../scss/base/mixins' as *;
+
+.services__section-nav {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.58);
+    border: $services-card-border;
+    box-shadow: $services-card-shadow;
+    gap: 10px;
+    padding: 12px;
+    border-radius: $services-card-radius;
+  }
+
+  &-item {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    padding: 22px 18px;
+    border-radius: 24px;
+    font: inherit;
+    color: #6e6e73;
+    cursor: pointer;
+    font-size: 20px;
+    white-space: nowrap;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      color 0.25s ease;
+
+    @include hover {
+      &:hover {
+        transform: translateX(3px);
+        color: $color-dark;
+      }
+    }
+
+    &.is-active {
+      background: #111113;
+      color: #fff;
+
+      .number {
+        background: rgba(255, 255, 255, 0.13);
+        color: #fff;
+      }
+    }
+
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(29, 29, 31, 0.06);
+      color: $color-light;
+      font-size: 14px;
+      line-height: 1;
+      flex-shrink: 0;
+      font-weight: 600;
+      user-select: none;
+    }
+  }
+}
