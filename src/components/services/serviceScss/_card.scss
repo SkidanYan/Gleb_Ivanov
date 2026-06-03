@@ -1,0 +1,58 @@
+@use '../../../scss/base/variables' as *;
+
+.services__section {
+  &-article {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border-radius: $services-card-radius;
+    background: rgba(255, 255, 255, 0.64);
+    border: $services-card-border;
+    box-shadow: $services-card-shadow;
+    height: 500px;
+
+    &-conteiner {
+      display: none;
+      height: 100%;
+
+      &.is-active {
+        display: block;
+      }
+    }
+  }
+}
+
+.services__section-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 16px;
+  min-height: 0;
+  height: 100%;
+  align-items: stretch;
+}
+
+.services__section-media {
+  min-height: 0;
+  height: 100%;
+  border-radius: 34px 0 0 34px;
+  overflow: hidden;
+  background: #d9dadd;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.services__section-details {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  align-content: start;
+  min-width: 0;
+  height: 100%;
+  row-gap: 20px;
+  padding: 24px 28px 24px 20px;
+}

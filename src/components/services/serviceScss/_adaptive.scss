@@ -1,0 +1,232 @@
+@use '../../../scss/base/mixins' as *;
+
+.services {
+  &__section {
+    @media (min-width: 1500px) {
+      max-width: 1200px;
+    }
+
+    @media (min-width: 1650px) {
+      max-width: 1200px;
+      min-height: 550px;
+    }
+
+    @include tablet {
+      display: block;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      min-height: 0;
+    }
+
+    @include mobile {
+      width: 92%;
+    }
+
+    &-description {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-nav {
+      @include tablet {
+        display: block;
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      @include mobile {
+        margin-top: 20px;
+      }
+    }
+
+    &-content {
+      @include tablet {
+        display: block;
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      @include mobile {
+        margin-top: 15px;
+      }
+    }
+
+    &-title {
+      @include tablet {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        max-width: none;
+        width: 100%;
+        margin: 0 0 12px 10px;
+        font-size: clamp(30px, 5vw, 80px);
+      }
+
+      @include mobile {
+        margin-left: 3px;
+      }
+    }
+  }
+}
+
+.services__section-nav {
+  &-list {
+    @include tablet {
+      flex-direction: row;
+      border-radius: 999px;
+      padding: 4px;
+      gap: 5px;
+    }
+
+    @include mobile {
+      padding: 2px;
+      gap: 1px;
+    }
+  }
+
+  &-item {
+    @include tablet {
+      flex: 1 1 0;
+      justify-content: center;
+      text-align: center;
+      padding: 12px 8px;
+      font-size: 18px;
+      gap: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .for_business {
+        display: none;
+      }
+    }
+
+    @include mobile {
+      padding: 8px 4px;
+      font-size: 11px;
+      gap: 2px;
+    }
+
+    .number {
+      @include tablet {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+      }
+
+      @include mobile {
+        width: 14px;
+        height: 14px;
+        font-size: 8px;
+      }
+    }
+  }
+}
+
+.services__section-article {
+  @include tablet {
+    height: 500px;
+  }
+
+  @include mobile {
+    height: 530px;
+  }
+}
+
+.services__section-panel {
+  @include tablet {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px 1fr;
+    gap: 12px;
+  }
+}
+
+.services__section-media {
+  @include mobile {
+    border-radius: 34px 34px 0 0;
+  }
+
+  .services__section-slider-arrow {
+    @include mobile {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.services__section-details {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px 22px 12px 14px;
+  }
+
+  @include mobile {
+    gap: 12px;
+    padding: 12px 16px 16px;
+  }
+}
+
+.services__section-article {
+  &-mark {
+    @include tablet {
+      font-size: 14px;
+    }
+
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+
+  &-title {
+    @include tablet {
+      margin-top: 10px;
+      font-size: clamp(24px, 3.9vw, 40px);
+    }
+
+    @include mobile {
+      font-size: clamp(22px, 7.2vw, 34px);
+    }
+  }
+
+  &-text {
+    @include tablet {
+      margin-top: 0;
+      font-size: clamp(14px, 1.95vw, 18px);
+    }
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  &-list {
+    @include tablet {
+      gap: 12px;
+
+      li {
+        font-size: clamp(13px, 1.6vw, 17px);
+      }
+    }
+  }
+
+  &-link {
+    @include tablet {
+      margin-top: 14px;
+      font-size: clamp(15px, 2vw, 19px);
+    }
+
+    @include mobile {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  }
+}

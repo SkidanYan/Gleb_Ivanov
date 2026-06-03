@@ -34,6 +34,57 @@ export function clickService(): void {
   });
 }
 
+export function initServiceSliders(): void {
+  const sliders = document.querySelectorAll<HTMLElement>('.services__section-slider');
+  if (!sliders.length) return;
+
+  sliders.forEach((slider) => {
+    const slides = Array.from(
+      slider.querySelectorAll<HTMLElement>('.services__section-slider-slide')
+    );
+    const dots = Array.from(
+      slider.querySelectorAll<HTMLButtonElement>('.services__section-slider-dot')
+    );
+    const prevButton = slider.querySelector<HTMLButtonElement>('.services__section-slider-arrow--prev');
+    const nextButton = slider.querySelector<HTMLButtonElement>('.services__section-slider-arrow--next');
+
+    if (!slides.length || !prevButton || !nextButton) return;
+
+    let currentIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
+    if (currentIndex < 0) currentIndex = 0;
+
+    const setActiveSlide = (nextIndex: number): void => {
+      const total = slides.length;
+      const normalizedIndex = ((nextIndex % total) + total) % total;
+      currentIndex = normalizedIndex;
+
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('is-active', index === normalizedIndex);
+      });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('is-active', index === normalizedIndex);
+      });
+    };
+
+    prevButton.addEventListener('click', () => {
+      setActiveSlide(currentIndex - 1);
+    });
+
+    nextButton.addEventListener('click', () => {
+      setActiveSlide(currentIndex + 1);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        setActiveSlide(index);
+      });
+    });
+
+    setActiveSlide(currentIndex);
+  });
+}
+
 export function revealServiceBlocks(): void {
   // Блоки для reveal
   const blocks = document.querySelectorAll<HTMLElement>(

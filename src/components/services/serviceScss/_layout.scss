@@ -1,0 +1,54 @@
+@use '../../../scss/base/variables' as *;
+
+.services {
+  width: 100%;
+
+  &__section {
+    display: grid;
+    grid-template-columns: $services-nav-column-width minmax(0, 1fr);
+    grid-template-rows: auto 500px;
+    column-gap: 20px;
+    row-gap: 8px;
+    min-height: 500px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &-description {
+      color: #6e6e73;
+      font-size: 24px;
+      margin: 0 0 10px 25px;
+      grid-column: 1;
+      grid-row: 1;
+      align-self: end;
+    }
+
+    &-nav {
+      grid-column: 1;
+      grid-row: 2;
+      display: flex;
+      min-height: 0;
+    }
+
+    &-content {
+      grid-column: 2;
+      grid-row: 2;
+      min-height: 0;
+      display: flex;
+    }
+
+    &-title {
+      display: block;
+      max-width: 90%;
+      margin: 0;
+      margin-left: 20px;
+      grid-column: 2;
+      grid-row: 1;
+      font-size: clamp(30px, 3.1vw, 70px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: $color-dark;
+      margin-bottom: 5px;
+    }
+  }
+}
