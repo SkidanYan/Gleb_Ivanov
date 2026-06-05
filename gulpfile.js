@@ -59,6 +59,13 @@ function imagesServices() {
     .pipe(browserSync.stream());
 }
 
+function faviconRoot() {
+  return gulp
+    .src('src/images/favicons/favicon.ico', { encoding: false })
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.stream());
+}
+
 // 6. Локальный сервер
 function serve(done) {
   browserSync.init({
@@ -82,6 +89,7 @@ function watchFiles() {
   gulp.watch('src/**/*.ts', gulp.series(typescript, reload));
   gulp.watch('src/images/**/*', gulp.series(imagesBase, reload)); // Добавили перезагрузку при изменении картинок
   gulp.watch('src/components/services/serviceImage/**/*', gulp.series(imagesServices, reload));
+  gulp.watch('src/images/favicons/favicon.ico', gulp.series(faviconRoot, reload));
 }
 
 // --- Сценарии ---
@@ -89,7 +97,7 @@ function watchFiles() {
 // Полная сборка (strict последовательность: сначала чистим, ПОТОМ копируем)
 const build = gulp.series(
   clean,
-  gulp.parallel(html, scss, typescript, imagesBase, imagesServices)
+  gulp.parallel(html, scss, typescript, imagesBase, imagesServices, faviconRoot)
 );
 
 // Режим разработки
@@ -106,6 +114,7 @@ exports.typescript = typescript;
 exports.images = gulp.parallel(imagesBase, imagesServices);
 exports.imagesBase = imagesBase;
 exports.imagesServices = imagesServices;
+exports.faviconRoot = faviconRoot;
 exports.build = build;
 exports.dev = dev;
 exports.default = dev;
