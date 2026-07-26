@@ -54,7 +54,7 @@ function imagesBase() {
 
 function imagesServices() {
   return gulp
-    .src('src/components/services/serviceImage/**/*', { encoding: false })
+    .src('src/components/services/serviceImage/**/*.webp', { encoding: false })
     .pipe(gulp.dest('dist/images/serviceImage'))
     .pipe(browserSync.stream());
 }
