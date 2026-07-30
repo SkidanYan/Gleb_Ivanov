@@ -4,11 +4,16 @@ const sass = require('gulp-sass')(require('sass'));
 const browserSync = require('browser-sync').create();
 const { deleteAsync } = require('del');
 const esbuild = require('esbuild');
-const outputDirectory = 'build';
+const os = require('node:os');
+const path = require('node:path');
+
+const outputDirectory = process.env.BUILD_OUTPUT_DIRECTORY
+  ? path.resolve(process.env.BUILD_OUTPUT_DIRECTORY)
+  : path.join(os.tmpdir(), 'gleb-ivanov-preview');
 
 // 1. Очистка временной папки сборки
 function clean() {
-  return deleteAsync([outputDirectory]);
+  return deleteAsync([outputDirectory], { force: true });
 }
 
 // 2. Сборка HTML
@@ -29,7 +34,7 @@ function scss() {
   return gulp
     .src('src/scss/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(`${outputDirectory}/css`))
+    .pipe(gulp.dest(path.join(outputDirectory, 'css')))
     .pipe(browserSync.stream());
 }
 
@@ -38,7 +43,7 @@ function typescript() {
   return esbuild.build({
     entryPoints: ['src/ts/main.ts'],
     bundle: true,
-    outfile: `${outputDirectory}/js/main.js`,
+    outfile: path.join(outputDirectory, 'js', 'main.js'),
     format: 'esm',
     target: 'es2020',
     sourcemap: true
@@ -49,14 +54,14 @@ function typescript() {
 function imagesBase() {
   return gulp
     .src('src/images/**/*', { encoding: false }) // Отключаем текстовую кодировку для бинарных файлов (очень важно в Gulp 5)
-    .pipe(gulp.dest(`${outputDirectory}/images`))
+    .pipe(gulp.dest(path.join(outputDirectory, 'images')))
     .pipe(browserSync.stream());
 }
 
 function imagesServices() {
   return gulp
     .src('src/components/services/serviceImage/**/*.webp', { encoding: false })
-    .pipe(gulp.dest(`${outputDirectory}/images/serviceImage`))
+    .pipe(gulp.dest(path.join(outputDirectory, 'images', 'serviceImage')))
     .pipe(browserSync.stream());
 }
 
@@ -70,7 +75,7 @@ function faviconRoot() {
 // 6. Локальный сервер
 function serve(done) {
   browserSync.init({
-    server: `./${outputDirectory}`,
+    server: outputDirectory,
     port: 3000,
     open: false
   });
