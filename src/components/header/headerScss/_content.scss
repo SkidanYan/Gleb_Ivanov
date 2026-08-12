@@ -12,9 +12,9 @@
 
   // Background
   background-image:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%),
-    radial-gradient(circle at top left, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 70%),
-    url('../images/header_photo_pc.png');
+    linear-gradient(90deg, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.32) 42%, rgba(0, 0, 0, 0.12) 68%, rgba(0, 0, 0, 0.32) 100%),
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0) 72%),
+    url('../images/header-photo.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 20%;
@@ -37,10 +37,11 @@
     margin-bottom: 25px;
 
     // Visual
-    background: linear-gradient(180deg, #dbdbdb 50%, #acacac 100%);
+    background: linear-gradient(180deg, #ffffff 45%, #d9d9dc 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.82));
   }
 
   &__title {
@@ -57,10 +58,11 @@
       display: inline-block;
 
       // Visual
-      background: linear-gradient(180deg, #ffffff 50%, #c4c6c8 100%);
+      background: linear-gradient(180deg, #ffffff 45%, #e2e3e5 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.86));
 
       // Interaction
       transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
@@ -95,10 +97,11 @@
       display: inline-block;
 
       // Visual
-      background: linear-gradient(90deg, #eaeaea 0%, #b8b8ba 100%);
+      background: linear-gradient(90deg, #ffffff 0%, #d9dade 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.84));
 
       // Interaction
       transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;

@@ -28,22 +28,26 @@
 
     // Interaction + visual
     transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
-    box-shadow: 0 8px 20px rgba(3, 7, 14, 0.22);
+    box-shadow:
+      0 10px 26px rgba(0, 0, 0, 0.42),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
   &__button--primary {
     // Visual
-    background-color: rgba(11, 18, 28, 0.88);
+    background-color: rgba(8, 13, 21, 0.94);
     color: #ffffff;
-    border-color: transparent;
+    border-color: rgba(255, 255, 255, 0.3);
   }
 
   &__button--secondary {
     // Visual
-    background-color: rgba(231, 236, 242, 0.9);
+    background-color: rgba(247, 249, 252, 0.96);
     color: #0f1722;
-    border-color: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 8px 18px rgba(7, 12, 20, 0.16);
+    border-color: rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 10px 26px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(255, 255, 255, 0.16);
   }
 
   @include hover {
