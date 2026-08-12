@@ -87,11 +87,11 @@
       right: 0;
       top: -12%;
       height: 112%;
-      background-image: url('../images/header-photo.webp');
+      background-image: url('../images/header-photo-mobile.webp');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center 55%;
-      filter: brightness(0.75);
+      filter: brightness(0.92) contrast(1.04);
     }
   }
 
@@ -169,7 +169,7 @@
 
     &::before {
       // Image brightness
-      filter: brightness(0.75);
+      filter: brightness(0.92) contrast(1.04);
     }
   }
 }

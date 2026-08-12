@@ -43,6 +43,93 @@
     margin-top: 16px;
   }
 
+  &__portfolio {
+    width: min(100%, 520px);
+    margin-top: 34px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    background: #1d1d1f;
+    box-shadow: 0 14px 34px rgba(29, 29, 31, 0.14);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background-color 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      background: #29292c;
+      box-shadow: 0 20px 42px rgba(29, 29, 31, 0.2);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba(29, 29, 31, 0.32);
+      outline-offset: 4px;
+    }
+  }
+
+  &__portfolio-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: #1d1d1f;
+    background: #fff;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__portfolio-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__portfolio-title {
+    font-size: 17px;
+    font-weight: 650;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  &__portfolio-caption {
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 12px;
+    line-height: 1.25;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__portfolio-arrow {
+    align-self: start;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+
+  &__portfolio:hover &__portfolio-arrow {
+    transform: translate(3px, -3px);
+  }
+
   &__team {
     width: 88%;
     margin: 0 auto 180px;
@@ -270,6 +357,28 @@
       margin-top: 0;
     }
 
+    &__portfolio {
+      width: 100%;
+      margin-top: 24px;
+      padding: 12px;
+      gap: 12px;
+      border-radius: 17px;
+    }
+
+    &__portfolio-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+    }
+
+    &__portfolio-title {
+      font-size: 16px;
+    }
+
+    &__portfolio-caption {
+      font-size: 11px;
+    }
+
     &__team {
       width: 100%;
       margin-bottom: 80px;
@@ -361,5 +470,12 @@
       line-height: 1.35;
     }
 
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__portfolio,
+  .about__portfolio-arrow {
+    transition: none;
   }
 }
